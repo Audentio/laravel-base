@@ -1,0 +1,30 @@
+{
+    "name": "audentio/laravel-boilerplate",
+    "description": "Laravel boilerplate for projects",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jake Booher",
+            "email": "jakeb@audentio.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.0",
+        "ext-json": "*",
+        "illuminate/contracts": "5.8.*|^6.0",
+        "illuminate/support": "5.8.*|^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Audentio\\LaravelBoilerplate\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Audentio\\LaravelBoilerplate\\Providers\\ExtendServiceProvider"
+            ]
+        }
+    }
+}
