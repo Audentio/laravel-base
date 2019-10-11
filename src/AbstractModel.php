@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AbstractModel extends Model
 {
     public $incrementing = false;
+    protected $keyType = 'string';
     protected $generateId = true;
     protected $generateType = 'base64';
     protected $generateKeySeedBytes = 8;
