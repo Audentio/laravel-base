@@ -1,6 +1,6 @@
 {
-    "name": "audentio/laravel-boilerplate",
-    "description": "Laravel boilerplate for projects",
+    "name": "audentio/laravel-base",
+    "description": "Laravel base for projects",
     "type": "library",
     "license": "MIT",
     "authors": [
