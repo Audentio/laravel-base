@@ -1,6 +1,6 @@
 <?php
 
-namespace Audentio\LaravelBoilerplate\Illuminate\Database\Schema\Grammars;
+namespace Audentio\LaravelBase\Illuminate\Database\Schema\Grammars;
 
 class MySqlGrammar extends \Illuminate\Database\Schema\Grammars\MySqlGrammar
 {

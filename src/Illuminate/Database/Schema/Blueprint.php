@@ -1,6 +1,6 @@
 <?php
 
-namespace Audentio\LaravelBoilerplate\Illuminate\Database\Schema;
+namespace Audentio\LaravelBase\Illuminate\Database\Schema;
 
 use Illuminate\Database\Schema\ColumnDefinition;
 

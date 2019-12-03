@@ -1,9 +1,9 @@
 <?php
 
-namespace Audentio\LaravelBoilerplate\Illuminate\Database;
+namespace Audentio\LaravelBase\Illuminate\Database;
 
-use Audentio\LaravelBoilerplate\Illuminate\Database\Schema\Blueprint;
-use Audentio\LaravelBoilerplate\Illuminate\Database\Schema\Grammars\MySqlGrammar as SchemaGrammar;
+use Audentio\LaravelBase\Illuminate\Database\Schema\Blueprint;
+use Audentio\LaravelBase\Illuminate\Database\Schema\Grammars\MySqlGrammar as SchemaGrammar;
 
 class MySqlConnection extends \Illuminate\Database\MySqlConnection
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Audentio\LaravelBoilerplate\Providers;
+namespace Audentio\LaravelBase\Providers;
 
-use Audentio\LaravelBoilerplate\Illuminate\Database\Migrations\MigrationCreator;
-use Audentio\LaravelBoilerplate\Illuminate\Database\MySqlConnection;
-use Audentio\LaravelBoilerplate\Illuminate\Foundation\Console\ModelMakeCommand;
-use Audentio\LaravelBoilerplate\Traits\ExtendServiceProviderTrait;
+use Audentio\LaravelBase\Illuminate\Database\Migrations\MigrationCreator;
+use Audentio\LaravelBase\Illuminate\Database\MySqlConnection;
+use Audentio\LaravelBase\Illuminate\Foundation\Console\ModelMakeCommand;
+use Audentio\LaravelBase\Traits\ExtendServiceProviderTrait;
 use Illuminate\Database\Connection;
 use Illuminate\Support\ServiceProvider;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Audentio\LaravelBoilerplate\Illuminate\Foundation\Console;
+namespace Audentio\LaravelBase\Illuminate\Foundation\Console;
 
-use Audentio\LaravelBoilerplate\Traits\ExtendConsoleCommandTrait;
+use Audentio\LaravelBase\Traits\ExtendConsoleCommandTrait;
 use Illuminate\Support\Str;
 
 class ConsoleMakeCommand extends \Illuminate\Foundation\Console\ConsoleMakeCommand

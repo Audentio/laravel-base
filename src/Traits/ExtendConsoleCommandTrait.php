@@ -1,6 +1,6 @@
 <?php
 
-namespace Audentio\LaravelBoilerplate\Traits;
+namespace Audentio\LaravelBase\Traits;
 
 use Illuminate\Support\Str;
 

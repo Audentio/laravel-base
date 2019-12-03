@@ -1,6 +1,6 @@
 <?php
 
-namespace Audentio\LaravelBoilerplate\Illuminate\Foundation\Console;
+namespace Audentio\LaravelBase\Illuminate\Foundation\Console;
 
 class ModelMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
 {
@@ -18,7 +18,7 @@ class ModelMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
         if ($classExists) {
             $extend = '';
         } else {
-            $extend = 'use Audentio\LaravelBoilerplate\AbstractModel;' . "\n\n";
+            $extend = 'use Audentio\LaravelBase\AbstractModel;' . "\n\n";
         }
 
         $stub = str_replace([

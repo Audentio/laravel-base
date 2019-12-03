@@ -1,8 +1,8 @@
 <?php
 
-namespace Audentio\LaravelBoilerplate;
+namespace Audentio\LaravelBase;
 
-use Audentio\LaravelBoilerplate\Utils\KeyUtil;
+use Audentio\LaravelBase\Utils\KeyUtil;
 use Illuminate\Database\Eloquent\Model;
 
 class AbstractModel extends Model

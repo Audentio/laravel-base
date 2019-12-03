@@ -1,8 +1,8 @@
 <?php
 
-namespace Audentio\LaravelBoilerplate\Illuminate\Database\Migrations;
+namespace Audentio\LaravelBase\Illuminate\Database\Migrations;
 
-use Audentio\LaravelBoilerplate\Illuminate\Database\Schema\Blueprint;
+use Audentio\LaravelBase\Illuminate\Database\Schema\Blueprint;
 
 class MigrationCreator extends \Illuminate\Database\Migrations\MigrationCreator
 {

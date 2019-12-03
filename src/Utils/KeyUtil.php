@@ -1,6 +1,6 @@
 <?php
 
-namespace Audentio\LaravelBoilerplate\Utils;
+namespace Audentio\LaravelBase\Utils;
 
 use Ramsey\Uuid\Uuid;
 
