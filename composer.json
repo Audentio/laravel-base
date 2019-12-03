@@ -19,13 +19,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Audentio\\LaravelBoilerplate\\": "src/"
+            "Audentio\\LaravelBase\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Audentio\\LaravelBoilerplate\\Providers\\ExtendServiceProvider"
+                "Audentio\\LaravelBase\\Providers\\ExtendServiceProvider"
             ]
         }
     }
