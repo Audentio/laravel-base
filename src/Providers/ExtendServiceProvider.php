@@ -5,6 +5,7 @@ namespace Audentio\LaravelBase\Providers;
 use Audentio\LaravelBase\Illuminate\Database\Migrations\MigrationCreator;
 use Audentio\LaravelBase\Illuminate\Database\MySqlConnection;
 use Audentio\LaravelBase\Illuminate\Foundation\Console\ModelMakeCommand;
+use Audentio\LaravelBase\Illuminate\Routing\Console\ControllerMakeCommand;
 use Audentio\LaravelBase\Traits\ExtendServiceProviderTrait;
 use Illuminate\Database\Connection;
 use Illuminate\Support\ServiceProvider;
@@ -28,6 +29,7 @@ class ExtendServiceProvider extends ServiceProvider
     {
         $this->overrideIlluminateCommand('migration.creator', MigrationCreator::class);
         $this->overrideIlluminateCommand('command.model.make', ModelMakeCommand::class);
+        $this->overrideIlluminateCommand('command.controller.make', ControllerMakeCommand::class);
     }
 
     protected function extendDatabase()
