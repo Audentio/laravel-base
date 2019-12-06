@@ -29,7 +29,7 @@ trait ApiResponseHandlerTrait
 
     protected function invalidCredentials()
     {
-        return $this->error('invalid_credentials', __('auth.failed'));
+        return $this->error('invalid_credentials', __('auth.failed'), 401);
     }
 
     protected function invalidBearerToken($message = null)
