@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Audentio\LaravelBase\Console\Commands;
 
 use Audentio\LaravelBase\Utils\PhpUtil;
 use Illuminate\Console\Command;
