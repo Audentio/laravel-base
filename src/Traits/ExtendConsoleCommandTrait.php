@@ -6,6 +6,24 @@ use Illuminate\Support\Str;
 
 trait ExtendConsoleCommandTrait
 {
+    protected function replaceClassReference($find, $replace, $stub): string
+    {
+        if (class_exists($replace)) {
+            $stub = str_replace($find, $replace, $stub);
+        }
+
+        return $stub;
+    }
+
+    protected function replaceTraitReference($find, $replace, $stub): string
+    {
+        if (trait_exists($replace)) {
+            $stub = str_replace($find, $replace, $stub);
+        }
+
+        return $stub;
+    }
+
     protected function suffixCommandClass($name, $suffix): string
     {
         return $this->modifyCommandClass($name, $suffix, 'suffix');
