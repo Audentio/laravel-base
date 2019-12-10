@@ -2,6 +2,8 @@
 
 namespace Audentio\LaravelBase\Illuminate\Database\Schema\Grammars;
 
+use Illuminate\Support\Fluent;
+
 class MySqlGrammar extends \Illuminate\Database\Schema\Grammars\MySqlGrammar
 {
     protected function typeBlob(Fluent $column): string
