@@ -13,9 +13,9 @@
         "php": ">=7.3.0",
         "ext-json": "*",
         "ext-openssl": "*",
-        "illuminate/contracts": "5.8.*|^6.0",
-        "illuminate/support": "5.8.*|^6.0",
-        "laravel/framework": "5.8.*|^6.0",
+        "illuminate/contracts": "^7.0",
+        "illuminate/support": "^7.0",
+        "laravel/framework": "^7.0",
         "ramsey/uuid": "^3.8"
     },
     "autoload": {
@@ -26,7 +26,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Audentio\\LaravelBase\\Providers\\ExtendServiceProvider"
+                "Audentio\\LaravelBase\\Providers\\ExtendServiceProvider",
+                "Audentio\\LaravelBase\\Providers\\LaravelBaseServiceProvider"
             ]
         }
     }

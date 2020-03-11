@@ -36,6 +36,10 @@ trait ExtendConsoleCommandTrait
 
     protected function modifyCommandClass($name, $string, $modifyType): string
     {
+        if (empty($string)) {
+            return $name;
+        }
+
         switch ($modifyType) {
             case 'prefix':
                 if (!Str::startsWith($name, $string)) {

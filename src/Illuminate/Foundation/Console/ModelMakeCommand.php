@@ -2,38 +2,27 @@
 
 namespace Audentio\LaravelBase\Illuminate\Foundation\Console;
 
+use Audentio\LaravelBase\Traits\ExtendGeneratorCommandTrait;
+use Illuminate\Database\Eloquent\Model;
+
 class ModelMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
 {
+    use ExtendGeneratorCommandTrait;
+
+    protected function qualifyClass($name)
+    {
+        return $this->generateQualifyClass($name, [
+            'namespaceTemplate' => config('audentioBase.modelGenerator.namespaceTemplate')
+        ]);
+    }
+
     protected function buildClass($name)
     {
         $stub = parent::buildClass($name);
+        $baseClass = config('audentioBase.modelGenerator.base');
 
-        $classExists = false;
-        try {
-            if (class_exists('App\Models\AbstractModel')) {
-                $classExists = true;
-            }
-        } catch (\ErrorException $e) {}
-
-        if ($classExists) {
-            $extend = '';
-        } else {
-            $extend = 'use Audentio\LaravelBase\AbstractModel;' . "\n\n";
-        }
-
-        $stub = str_replace([
-            'use Illuminate\Database\Eloquent\Model;' . "\n\n",
-            'extends Model',
-        ], [
-            $extend,
-            'extends AbstractModel'
-        ], $stub);
+        $stub = $this->replaceBaseClassInStub(Model::class, $baseClass, $stub);
 
         return $stub;
-    }
-
-    protected function getDefaultNamespace($rootNamespace)
-    {
-        return $rootNamespace . '\Models';
     }
 }

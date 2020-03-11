@@ -1,6 +1,6 @@
 <?php
 
-namespace Audentio\LaravelBase;
+namespace Audentio\LaravelBase\Foundation;
 
 use Audentio\LaravelBase\Utils\KeyUtil;
 use Illuminate\Database\Eloquent\Model;
