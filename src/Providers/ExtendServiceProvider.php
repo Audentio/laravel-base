@@ -29,6 +29,7 @@ class ExtendServiceProvider extends ServiceProvider
     {
         $this->overrideIlluminateCommand('migration.creator', MigrationCreator::class, $this->app->basePath('stubs'));
         $this->overrideIlluminateCommand('command.model.make', ModelMakeCommand::class);
+        $this->overrideIlluminateCommand('command.controller.make', ControllerMakeCommand::class);
     }
 
     protected function extendDatabase()

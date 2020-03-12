@@ -13,7 +13,7 @@ trait ExtendGeneratorCommandTrait
         $options = array_merge([
             'suffix' => '',
             'prefix' => '',
-            'namespaceTemplate' => '{{RootNamespace}}',
+            'namespaceTemplate' => '',
         ], $options);
         $name = ltrim($name, '\\/');
 
@@ -26,8 +26,8 @@ trait ExtendGeneratorCommandTrait
         $name = str_replace('/', '\\', $name);
         $rawClassName = $name;
 
-        $this->prefixCommandClass($name, $options['prefix']);
-        $this->suffixCommandClass($name, $options['suffix']);
+        $name = $this->prefixCommandClass($name, $options['prefix']);
+        $name = $this->suffixCommandClass($name, $options['suffix']);
 
         return $this->generateQualifyClass(
             $this->generateNamespace(trim($rootNamespace, '\\'), $options['namespaceTemplate'], [
@@ -40,7 +40,7 @@ trait ExtendGeneratorCommandTrait
     public function generateNamespace($rootNamespace, $template = '', array $vars = []): string
     {
         if (empty($template)) {
-            return $rootNamespace;
+            return $this->getDefaultNamespace($rootNamespace);
         }
         $namespace = $template;
 

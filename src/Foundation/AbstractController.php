@@ -1,6 +1,6 @@
 <?php
 
-namespace Audentio\LaravelBase\Http\Controllers;
+namespace Audentio\LaravelBase\Foundation;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Audentio\LaravelBase\Http\Controllers\Traits;
+namespace Audentio\LaravelBase\Foundation\Traits;
 
 trait ApiControllerTrait
 {
