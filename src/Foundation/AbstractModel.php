@@ -10,7 +10,7 @@ class AbstractModel extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     protected $generateId = true;
-    protected $generateType = 'base64';
+    protected $generateType = 'uuid';
     protected $generateKeySeedBytes = 8;
     protected $checkIdCollisions = true;
     protected $refreshOnSave = false;
