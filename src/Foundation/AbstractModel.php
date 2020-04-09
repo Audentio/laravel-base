@@ -52,6 +52,19 @@ class AbstractModel extends Model
     public function preDelete() {}
     public function postDelete() {}
 
+    protected function asDateTime($value)
+    {
+        if (config('audentioBase.convertDateTimeToAppTimezoneBeforeSaving')) {
+            if ($value instanceof CarbonInterface) {
+                if ($value->timezone !== config('app.timezone')) {
+                    $value->timezone = config('app.timezone');
+                }
+            }
+        }
+
+        return parent::asDateTime($value);
+    }
+
     public function save(array $options = [])
     {
         $this->originalAttributes = $this->getOriginal();

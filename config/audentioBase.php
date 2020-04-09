@@ -9,4 +9,6 @@ return [
     'controllerGenerator' => [
         'base' => \Audentio\LaravelBase\Foundation\AbstractController::class,
     ],
+
+    'convertDateTimeToAppTimezoneBeforeSaving' => true,
 ];
