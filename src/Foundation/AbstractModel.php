@@ -55,9 +55,12 @@ class AbstractModel extends Model
     protected function asDateTime($value)
     {
         if (config('audentioBase.convertDateTimeToAppTimezoneBeforeSaving')) {
-            if ($value instanceof CarbonInterface) {
-                if ($value->timezone !== config('app.timezone')) {
-                    $value->timezone = config('app.timezone');
+            if ($value instanceof CarbonInterface
+                || $value instanceof Carbon
+                || $value instanceof \DateTime
+            ) {
+                if ($value->getTimezone() !== config('app.timezone')) {
+                    $value->setTimezone(new \DateTimeZone(config('app.timezone')));
                 }
             }
         }
