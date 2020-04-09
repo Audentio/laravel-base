@@ -21,10 +21,12 @@ class MigrationCreator extends \Illuminate\Database\Migrations\MigrationCreator
             "<?php\n\n",
             'use Illuminate\Database\Schema\Blueprint;' . "\n",
             '$table->bigIncrements(\'id\');',
+            '$table->timestamps();',
         ], [
             "<?php\n\n" . implode("\n", $additionalClasses) . "\n",
             '',
             '$table->id();',
+            '$table->timestampsTz();',
         ], $stub);
 
         return $stub;
