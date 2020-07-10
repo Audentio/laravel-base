@@ -2,6 +2,7 @@
 
 namespace Audentio\LaravelBase\Providers;
 
+use Audentio\LaravelBase\Console\Commands\MakePivotCommand;
 use Audentio\LaravelBase\Illuminate\Database\Migrations\MigrationCreator;
 use Audentio\LaravelBase\Illuminate\Database\MySqlConnection;
 use Audentio\LaravelBase\Illuminate\Foundation\Console\ModelMakeCommand;
@@ -24,5 +25,11 @@ class LaravelBaseServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../config/audentioBase.php' => config_path('audentioBase.php'),
         ]);
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                MakePivotCommand::class,
+            ]);
+        }
     }
 }
