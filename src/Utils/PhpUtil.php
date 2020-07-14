@@ -4,9 +4,19 @@ namespace Audentio\LaravelBase\Utils;
 
 class PhpUtil
 {
+    public static function getClassNameForFilePath($filePath): string
+    {
+        $filePath = str_replace(app_path(), '', $filePath);
+        $className = str_replace('/', '\\', str_replace('.php', '', $filePath));
+        if (substr($className, 0, 1) !== '\\') {
+            $className = '\\' . $className;
+        }
+        return 'App' . $className;
+    }
+
     public static function varExport($var, $indent='')
     {
-        switch(gettype($var)) {
+        switch (gettype($var)) {
             case 'string':
                 return '\'' . addcslashes($var, "\\\$'\r\n\t\v\f") . '\'';
             case 'array':

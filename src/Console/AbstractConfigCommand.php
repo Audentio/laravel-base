@@ -57,6 +57,6 @@ EOF;
         parent::__construct();
     }
 
-    protected abstract function getConfig(): array;
-    protected abstract function getConfigFileName(): string;
+    abstract protected function getConfig(): array;
+    abstract protected function getConfigFileName(): string;
 }

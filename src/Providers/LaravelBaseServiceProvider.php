@@ -2,6 +2,7 @@
 
 namespace Audentio\LaravelBase\Providers;
 
+use Audentio\LaravelBase\Console\Commands\ConfigContentTypesCommand;
 use Audentio\LaravelBase\Console\Commands\MakePivotCommand;
 use Audentio\LaravelBase\Illuminate\Database\Migrations\MigrationCreator;
 use Audentio\LaravelBase\Illuminate\Database\MySqlConnection;
@@ -29,6 +30,7 @@ class LaravelBaseServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 MakePivotCommand::class,
+                ConfigContentTypesCommand::class,
             ]);
         }
     }

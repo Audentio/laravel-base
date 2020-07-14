@@ -30,7 +30,7 @@ abstract class AbstractCronCommand extends Command
         }
     }
 
-    protected abstract function runCron();
+    abstract protected function runCron();
 
     public function __construct()
     {

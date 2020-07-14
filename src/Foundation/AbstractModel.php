@@ -119,6 +119,23 @@ class AbstractModel extends Model
         return $this->originalAttributes;
     }
 
+    public static function getContentTypeFields(): array
+    {
+        $className =  get_called_class();
+        $reflector = new \ReflectionClass($className);
+        $methods = $reflector->getMethods(\ReflectionMethod::IS_STATIC);
+        $instance = new $className;
+        $contentTypeFields = [];
+        foreach ($methods as $method) {
+            $methodName = $method->getName();
+            if (strpos($methodName, 'contentTypeFields__') === 0) {
+                $fields = call_user_func([$className, $methodName], $instance);
+                $contentTypeFields = array_replace_recursive($contentTypeFields, $fields);
+            }
+        }
+        return $contentTypeFields;
+    }
+
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
