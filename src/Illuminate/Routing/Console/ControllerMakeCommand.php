@@ -33,10 +33,16 @@ class ControllerMakeCommand extends \Illuminate\Routing\Console\ControllerMakeCo
             $replace = $this->buildModelReplacements($replace);
         }
 
-        $replace["use {$controllerNamespace}\Controller;\n"] = '';
+        $replace["use {$controllerNamespace}\AbstractController;\n"] = '';
 
-        return str_replace(
+        if (class_exists($controllerNamespace) . '\\AbstractController') {
+            $replace["use " . config('audentioBase.controllerGenerator.base') . ";\n"] = '';
+        }
+
+        $class = str_replace(
             array_keys($replace), array_values($replace), $stub
         );
+
+        return $class;
     }
 }
