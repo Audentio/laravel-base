@@ -4,6 +4,7 @@ namespace Audentio\LaravelBase\Providers;
 
 use Audentio\LaravelBase\Illuminate\Database\Migrations\MigrationCreator;
 use Audentio\LaravelBase\Illuminate\Database\MySqlConnection;
+use Audentio\LaravelBase\Illuminate\Database\SQLiteConnection;
 use Audentio\LaravelBase\Illuminate\Foundation\Console\ModelMakeCommand;
 use Audentio\LaravelBase\Illuminate\Routing\Console\ControllerMakeCommand;
 use Audentio\LaravelBase\Traits\ExtendServiceProviderTrait;
@@ -35,6 +36,7 @@ class ExtendServiceProvider extends ServiceProvider
     protected function extendDatabase()
     {
         $this->extendDatabaseConnection('mysql', MySqlConnection::class);
+        $this->extendDatabaseConnection('sqlite', SQLiteConnection::class);
     }
 
     protected function extendDatabaseConnection($connection, $className)
