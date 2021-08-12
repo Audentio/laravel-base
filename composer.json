@@ -27,7 +27,8 @@
         "laravel": {
             "providers": [
                 "Audentio\\LaravelBase\\Providers\\ExtendServiceProvider",
-                "Audentio\\LaravelBase\\Providers\\LaravelBaseServiceProvider"
+                "Audentio\\LaravelBase\\Providers\\LaravelBaseServiceProvider",
+                "Audentio\\LaravelBase\\Providers\\ValidationServiceProvider"
             ]
         }
     }
