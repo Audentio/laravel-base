@@ -8,7 +8,10 @@ class Blueprint extends \Illuminate\Database\Schema\Blueprint
 {
     public function id($column = 'id', $primaryKey = true): ColumnDefinition
     {
-        $columnBuilder = $this->uuid($column)->collation('utf8mb4_bin');
+        $columnBuilder = $this->uuid($column);
+        if (\DB::connection()->getPDO()->getAttribute(\PDO::ATTR_DRIVER_NAME) !== 'sqlite') {
+            $columnBuilder->collation('utf8mb4_bin');
+        }
 
         if ($primaryKey) {
             $this->bigIncrements('incr_' . $column);
