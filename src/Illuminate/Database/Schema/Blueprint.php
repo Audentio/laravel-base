@@ -34,9 +34,9 @@ class Blueprint extends \Illuminate\Database\Schema\Blueprint
         $this->primary([$columnA, $columnB]);
     }
 
-    public function morphsNullable($name, $indexName = null): void
+    public function morphsNullable($name, $indexName = null, ?string $after = null): void
     {
-        $this->morphs($name, $indexName, true);
+        $this->morphs($name, $indexName, true, $after);
     }
 
     public function blob($column): ColumnDefinition
@@ -54,7 +54,7 @@ class Blueprint extends \Illuminate\Database\Schema\Blueprint
         return $this->addColumn('longBlob', $column);
     }
 
-    public function morphs($name, $indexName = null, bool $nullable = false): void
+    public function morphs($name, $indexName = null, ?bool $nullable = false, ?string $after = null): void
     {
         $type = $this->string("{$name}_type");
         $id = $this->remoteId("{$name}_id");
@@ -62,6 +62,11 @@ class Blueprint extends \Illuminate\Database\Schema\Blueprint
         if ($nullable) {
             $type->nullable();
             $id->nullable();
+        }
+
+        if ($after) {
+            $type->after($after);
+            $id->after("{$name}_type");
         }
 
         $this->index(["{$name}_type", "{$name}_id"], $indexName);
