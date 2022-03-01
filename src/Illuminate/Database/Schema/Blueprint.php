@@ -8,7 +8,10 @@ class Blueprint extends \Illuminate\Database\Schema\Blueprint
 {
     public function id($column = 'id', $primaryKey = true): ColumnDefinition
     {
-        $columnBuilder = $this->uuid($column)->collation('utf8mb4_bin');
+        $columnBuilder = $this->uuid($column);
+        if (\DB::connection()->getPDO()->getAttribute(\PDO::ATTR_DRIVER_NAME) !== 'sqlite') {
+            $columnBuilder->collation('utf8mb4_bin');
+        }
 
         if ($primaryKey) {
             $this->bigIncrements('incr_' . $column);
@@ -31,9 +34,9 @@ class Blueprint extends \Illuminate\Database\Schema\Blueprint
         $this->primary([$columnA, $columnB]);
     }
 
-    public function morphsNullable($name, $indexName = null): void
+    public function morphsNullable($name, $indexName = null, ?string $after = null): void
     {
-        $this->morphs($name, $indexName, true);
+        $this->morphs($name, $indexName, true, $after);
     }
 
     public function blob($column): ColumnDefinition
@@ -51,7 +54,7 @@ class Blueprint extends \Illuminate\Database\Schema\Blueprint
         return $this->addColumn('longBlob', $column);
     }
 
-    public function morphs($name, $indexName = null, bool $nullable = false): void
+    public function morphs($name, $indexName = null, ?bool $nullable = false, ?string $after = null): void
     {
         $type = $this->string("{$name}_type");
         $id = $this->remoteId("{$name}_id");
@@ -59,6 +62,11 @@ class Blueprint extends \Illuminate\Database\Schema\Blueprint
         if ($nullable) {
             $type->nullable();
             $id->nullable();
+        }
+
+        if ($after) {
+            $type->after($after);
+            $id->after("{$name}_type");
         }
 
         $this->index(["{$name}_type", "{$name}_id"], $indexName);
