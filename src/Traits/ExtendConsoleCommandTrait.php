@@ -36,12 +36,12 @@ trait ExtendConsoleCommandTrait
 
     protected function modifyCommandClass($className, $string, $modifyType): string
     {
+        $classNameParts = explode('\\', $className);
+        $name = array_pop($classNameParts);
+        
         if (empty($string)) {
             return $name;
         }
-
-        $classNameParts = explode('\\', $className);
-        $name = array_pop($classNameParts);
 
         switch ($modifyType) {
             case 'prefix':
