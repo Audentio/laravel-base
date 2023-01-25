@@ -34,8 +34,11 @@ trait ExtendConsoleCommandTrait
         return $this->modifyCommandClass($name, $prefix, 'prefix');
     }
 
-    protected function modifyCommandClass($name, $string, $modifyType): string
+    protected function modifyCommandClass($className, $string, $modifyType): string
     {
+        $classNameParts = explode('\\', $className);
+        $name = array_pop($classNameParts);
+        
         if (empty($string)) {
             return $name;
         }
@@ -57,6 +60,8 @@ trait ExtendConsoleCommandTrait
                 throw new \LogicException('Unknown $modifyType: ' . $modifyType);
         }
 
-        return $name;
+        $classNameParts[] = $name;
+
+        return implode('\\', $classNameParts);
     }
 }
