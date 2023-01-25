@@ -52,7 +52,8 @@ trait ExtendGeneratorCommandTrait
         return $namespace;
     }
 
-    public function replaceBaseClassInStub($oldBaseClass, $newBaseClass, $stub): string
+    public function replaceBaseClassInStub(string $oldBaseClass, string $newBaseClass, string $name,
+                                           string $stub): string
     {
         if ($newBaseClass) {
             $newBaseClassParts = explode('\\', $newBaseClass);
@@ -61,8 +62,20 @@ trait ExtendGeneratorCommandTrait
             $oldBaseClassParts = explode('\\', $oldBaseClass);
             $oldBaseClassName = end($oldBaseClassParts);
 
-            $stub = str_replace('use ' . $oldBaseClass . ';', 'use ' . $newBaseClass . ';', $stub);
-            $stub = str_replace('extends ' . $oldBaseClassName, 'extends ' . $newBaseClassName . '', $stub);
+            $nameParts = explode('\\', $name);
+            array_pop($nameParts);
+            $nameNamespace = implode('\\', $nameParts);
+
+            array_pop($newBaseClassParts);
+            $newBaseClassNamespace = implode('\\', $newBaseClassParts);
+
+            if ($nameNamespace === $newBaseClassNamespace) {
+                $stub = str_replace('use ' . $oldBaseClass . ';' . "\n", '', $stub);
+            } else {
+                $stub = str_replace('use ' . $oldBaseClass . ';', 'use ' . $newBaseClass . ';', $stub);
+            }
+            $stub = str_replace('extends ' . $oldBaseClassName, 'extends ' . $newBaseClassName . '',
+                $stub);
         }
 
         return $stub;

@@ -10,13 +10,13 @@
         }
     ],
     "require": {
-        "php": ">=7.3.0",
+        "php": "^8.0.2",
         "ext-json": "*",
         "ext-openssl": "*",
-        "illuminate/contracts": "^7.0 | ^8.0 | ^9.0",
-        "illuminate/support": "^7.0 | ^8.0 | ^9.0",
-        "laravel/framework": "^7.0 | ^8.0 | ^9.0",
-        "ramsey/uuid": "^4"
+        "illuminate/contracts": "^9.0",
+        "illuminate/support": "^9.0",
+        "laravel/framework": "^9.0",
+        "ramsey/uuid": "^4.7"
     },
     "autoload": {
         "psr-4": {
@@ -26,8 +26,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Audentio\\LaravelBase\\Providers\\ExtendServiceProvider",
+                "Audentio\\LaravelBase\\Providers\\ArtisanServiceProvider",
+                "Audentio\\LaravelBase\\Providers\\BaseExtendServiceProvider",
                 "Audentio\\LaravelBase\\Providers\\LaravelBaseServiceProvider",
+                "Audentio\\LaravelBase\\Providers\\MigrationServiceProvider",
                 "Audentio\\LaravelBase\\Providers\\ValidationServiceProvider"
             ]
         }

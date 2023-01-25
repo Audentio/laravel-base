@@ -12,26 +12,13 @@ use Audentio\LaravelBase\Traits\ExtendServiceProviderTrait;
 use Illuminate\Database\Connection;
 use Illuminate\Support\ServiceProvider;
 
-class ExtendServiceProvider extends ServiceProvider
+class BaseExtendServiceProvider extends ServiceProvider
 {
     use ExtendServiceProviderTrait;
 
     public function register(): void
     {
-        $this->extendIlluminate();
         $this->extendDatabase();
-    }
-
-    protected function extendIlluminate(): void
-    {
-        $this->extendIlluminateCommands();
-    }
-
-    protected function extendIlluminateCommands(): void
-    {
-        $this->overrideIlluminateCommand('migration.creator', MigrationCreator::class, $this->app->basePath('stubs'));
-        $this->overrideIlluminateCommand('command.model.make', ModelMakeCommand::class);
-        $this->overrideIlluminateCommand('command.controller.make', ControllerMakeCommand::class);
     }
 
     protected function extendDatabase(): void

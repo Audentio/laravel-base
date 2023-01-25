@@ -11,7 +11,7 @@ class ConsoleMakeCommand extends \Illuminate\Foundation\Console\ConsoleMakeComma
 
     protected function qualifyClass($name)
     {
-        $this->suffixCommandClass($name, 'Command');
+        $name = $this->suffixCommandClass($name, 'Command');
 
         return parent::qualifyClass($name);
     }

@@ -21,7 +21,7 @@ class ModelMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
         $stub = parent::buildClass($name);
         $baseClass = config('audentioBase.modelGenerator.base');
 
-        $stub = $this->replaceBaseClassInStub(Model::class, $baseClass, $stub);
+        $stub = $this->replaceBaseClassInStub(Model::class, $baseClass, $name, $stub);
 
         return $stub;
     }
