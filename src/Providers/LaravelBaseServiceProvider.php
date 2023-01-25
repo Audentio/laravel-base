@@ -10,12 +10,14 @@ use Audentio\LaravelBase\Illuminate\Foundation\Console\ModelMakeCommand;
 use Audentio\LaravelBase\Illuminate\Routing\Console\ControllerMakeCommand;
 use Audentio\LaravelBase\Traits\ExtendServiceProviderTrait;
 use Illuminate\Database\Connection;
+use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelBaseServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        Builder::defaultMorphKeyType('uuid');
         $this->mergeConfigFrom(
             __DIR__ . '/../../config/audentioBase.php', 'audentioBase'
         );
