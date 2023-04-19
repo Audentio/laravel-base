@@ -49,6 +49,7 @@ trait ModelTrait
     {
         $this->guessContentType();
         $this->incrementing = false;
+        $this->keyType = 'string';
     }
 
     protected function asDateTime($value): Carbon
