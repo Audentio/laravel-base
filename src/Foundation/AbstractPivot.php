@@ -9,3 +9,4 @@ abstract class AbstractPivot extends AbstractModel
     use BasePivotTrait;
 
     protected bool $generateId = false;
+}
