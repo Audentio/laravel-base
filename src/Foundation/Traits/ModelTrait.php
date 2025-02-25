@@ -84,7 +84,7 @@ trait ModelTrait
         $contentTypeFields = [];
         foreach ($methods as $method) {
             $methodName = $method->getName();
-            if (strpos($methodName, 'contentTypeFields__') === 0) {
+            if (str_starts_with($methodName, 'contentTypeFields__')) {
                 $fields = call_user_func([$className, $methodName], $instance);
                 $contentTypeFields = array_replace_recursive($contentTypeFields, $fields);
             }

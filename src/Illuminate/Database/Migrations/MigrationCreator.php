@@ -17,7 +17,7 @@ class MigrationCreator extends \Illuminate\Database\Migrations\MigrationCreator
             $className = 'use ' . $className . ';';
         }
 
-        $stub = str_replace([
+        return str_replace([
             "<?php\n\n",
             'use Illuminate\Database\Schema\Blueprint;' . "\n",
             '$table->bigIncrements(\'id\');',
@@ -26,7 +26,5 @@ class MigrationCreator extends \Illuminate\Database\Migrations\MigrationCreator
             '',
             '$table->id();',
         ], $stub);
-
-        return $stub;
     }
 }
