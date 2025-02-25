@@ -13,7 +13,9 @@
         "php": ">=8.2",
         "ext-json": "*",
         "ext-openssl": "*",
-        "laravel/framework": "^11.0",
+        "illuminate/contracts": "^9.0|^10.0|^11.0",
+        "illuminate/support": "^9.0|^10.0|^11.0",
+        "laravel/framework": "^9.0|^10.0|^11.0",
         "ramsey/uuid": "^4.7",
       "ext-pdo": "*"
     },
