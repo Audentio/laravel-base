@@ -13,7 +13,7 @@ class ConfigContentTypesCommand extends AbstractConfigCommand
         foreach (glob(app_path('Models/*.php')) as $filePath) {
             $fileParts = explode('/', $filePath);
             $fileName = array_pop($fileParts);
-            if (strpos($fileName, 'Abstract') === 0) continue;
+            if (str_starts_with($fileName, 'Abstract')) continue;
 
             $className = PhpUtil::getClassNameForFilePath($filePath);
 

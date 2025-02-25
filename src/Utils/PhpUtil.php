@@ -8,13 +8,13 @@ class PhpUtil
     {
         $filePath = str_replace(app_path(), '', $filePath);
         $className = str_replace('/', '\\', str_replace('.php', '', $filePath));
-        if (substr($className, 0, 1) !== '\\') {
+        if (!str_starts_with($className, '\\')) {
             $className = '\\' . $className;
         }
         return 'App' . $className;
     }
 
-    public static function varExport($var, $indent='')
+    public static function varExport($var, $indent = ''): null|string
     {
         switch (gettype($var)) {
             case 'string':

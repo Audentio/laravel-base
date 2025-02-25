@@ -39,10 +39,8 @@ class ControllerMakeCommand extends \Illuminate\Routing\Console\ControllerMakeCo
             $replace["use " . config('audentioBase.controllerGenerator.base') . ";\n"] = '';
         }
 
-        $class = str_replace(
+        return str_replace(
             array_keys($replace), array_values($replace), $stub
         );
-
-        return $class;
     }
 }

@@ -4,10 +4,10 @@ namespace Audentio\LaravelBase\Utils;
 
 class ContentTypeUtil
 {
-    protected static $instances = [];
+    protected static array $instances = [];
 
-    protected $contentType;
-    protected $contentTypeFields = [];
+    protected string $contentType;
+    protected array $contentTypeFields = [];
 
     public function __get($name)
     {
@@ -31,21 +31,21 @@ class ContentTypeUtil
         return $modelClass::with($with)->find($contentId);
     }
 
-    public static function getModelClassNameForContentType($contentType)
+    public static function getModelClassNameForContentType($contentType): string
     {
         self::normalizeContentType($contentType);
 
         return $contentType;
     }
 
-    public static function normalizeContentType(&$contentType)
+    public static function normalizeContentType(&$contentType): void
     {
-        if (strpos($contentType, 'App\Models') === false) {
+        if (!str_contains($contentType, 'App\Models')) {
             $contentType = 'App\Models\\' . $contentType;
         }
     }
 
-    public static function getContentTypeField($field)
+    public static function getContentTypeField($field): array
     {
         $values = [];
 

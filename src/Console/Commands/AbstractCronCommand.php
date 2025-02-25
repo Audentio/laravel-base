@@ -17,10 +17,10 @@ abstract class AbstractCronCommand extends Command
         if (empty($this->signature)) {
             $classParts = explode('\\', get_class($this));
             $className = array_pop($classParts);
-            if (substr($className, -7) === 'Command') {
+            if (str_ends_with($className, 'Command')) {
                 $className = substr($className, 0, -7);
             }
-            if (substr($className, 0, 4) === 'Cron') {
+            if (str_starts_with($className, 'Cron')) {
                 $className = substr($className, 4);
             }
 
