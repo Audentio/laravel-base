@@ -111,7 +111,7 @@ class ContentTypeUtil
 
     public static function getFriendlyContentTypeName($contentType, bool $lcFirst = false): string
     {
-        $contentType = str_replace('App\Models\\', '', $contentType);
+        $contentType = class_basename($contentType);
 
         if ($lcFirst) {
             $contentType = lcfirst($contentType);
