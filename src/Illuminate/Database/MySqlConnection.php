@@ -38,6 +38,13 @@ class MySqlConnection extends \Illuminate\Database\MySqlConnection
 
     protected function getDefaultSchemaGrammar()
     {
-        return $this->withTablePrefix(new SchemaGrammar);
+        if (version_compare(app()->version(), '12.0.0', '>=')) {
+            return new SchemaGrammar($this);
+        } else if (version_compare(app()->version(), '12.0.0', '>=')) {
+            ($grammar = new SchemaGrammar())->setConnection($this);
+            return $this->withTablePrefix($grammar);
+        } else {
+            return $this->withTablePrefix(new SchemaGrammar);
+        }
     }
 }
