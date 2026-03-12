@@ -12,8 +12,8 @@ class SQLiteConnection extends \Illuminate\Database\SQLiteConnection
     {
         $builder = parent::getSchemaBuilder();
 
-        $builder->blueprintResolver(function($table, $callback) {
-            return new Blueprint($table, $callback);
+        $builder->blueprintResolver(function($connection, $table, $callback) {
+            return new Blueprint($connection, $table, $callback);
         });
 
         return $builder;
