@@ -57,7 +57,9 @@ trait ModelTrait
         if (config('audentioBase.convertDateTimeToAppTimezoneBeforeSaving')) {
             if ($value instanceof \DateTimeInterface) {
                 if ($value->getTimezone() !== config('app.timezone')) {
-                    $value->setTimezone(new \DateTimeZone(config('app.timezone')));
+                    // setTimezone() returns the converted date; on an immutable instance it does not
+                    // change $value, and PHP 8.5 (#[\NoDiscard]) warns when the result is discarded.
+                    $value = $value->setTimezone(new \DateTimeZone(config('app.timezone')));
                 }
             }
         }
